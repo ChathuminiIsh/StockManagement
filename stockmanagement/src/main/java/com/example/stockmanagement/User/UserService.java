@@ -1,4 +1,4 @@
-package com.example.stockmanagement.Users;
+package com.example.stockmanagement.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,22 +20,25 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User addUser(User user) {
+    public User addUser(UserDTO userDTO) {
+        User user = new User();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
         String password = encoder.encode(user.getPassword());
-
-        user.setPassword(password);
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(userDTO.getPassword());
+        user.setEmail(userDTO.getEmail());
+        user.setRole(userDTO.getRole());
         user.setCreatedAt(java.time.LocalDateTime.now());
         return userRepository.save(user);
     }
 
-    public User updateUser(int id, User userDetails) {
+    public User updateUser(int id, UserDTO useruserDTO) {
         User user = userRepository.findById(id).orElse(null);
         if (user != null) {
-            user.setUsername(userDetails.getUsername());
-            user.setPassword(userDetails.getPassword());
-            user.setEmail(userDetails.getEmail());
-            user.setRole(userDetails.getRole());
+            user.setUsername(useruserDTO.getUsername());
+            user.setPassword(useruserDTO.getPassword());
+            user.setEmail(useruserDTO.getEmail());
+            user.setRole(useruserDTO.getRole());
             return userRepository.save(user);
         }
         return null;

@@ -1,4 +1,4 @@
-package com.example.stockmanagement.Users;
+package com.example.stockmanagement.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +28,13 @@ public class UserController {
     }
 
     @PostMapping
-    public User addUser(@RequestBody User user) {
+    public User addUser(@RequestBody UserDTO user) {
         return userService.addUser(user);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User userDetails) {
-        User updatedUser = userService.updateUser(id, userDetails);
+    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody UserDTO userDTO) {
+        User updatedUser = userService.updateUser(id, userDTO);
         if (updatedUser != null) {
             return ResponseEntity.ok(updatedUser);
         }

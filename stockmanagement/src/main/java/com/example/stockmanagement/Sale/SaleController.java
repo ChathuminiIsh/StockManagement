@@ -1,4 +1,4 @@
-package com.example.stockmanagement.Sales;
+package com.example.stockmanagement.Sale;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

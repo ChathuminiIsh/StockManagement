@@ -28,13 +28,13 @@ public class SupplierController {
     }
 
     @PostMapping
-    public Supplier addSupplier(@RequestBody Supplier supplier) {
+    public Supplier addSupplier(@RequestBody SupplierDTO supplier) {
         return supplierService.addSupplier(supplier);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Supplier> updateSupplier(@PathVariable int id, @RequestBody Supplier supplierDetails) {
-        Supplier updatedSupplier = supplierService.updateSupplier(id, supplierDetails);
+    public ResponseEntity<Supplier> updateSupplier(@PathVariable int id, @RequestBody SupplierDTO supplierDTO) {
+        Supplier updatedSupplier = supplierService.updateSupplier(id, supplierDTO);
         if (updatedSupplier != null) {
             return ResponseEntity.ok(updatedSupplier);
         }

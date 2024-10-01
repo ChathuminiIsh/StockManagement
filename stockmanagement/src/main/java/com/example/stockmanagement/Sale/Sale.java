@@ -1,8 +1,8 @@
-package com.example.stockmanagement.Sales;
+package com.example.stockmanagement.Sale;
 
 
 import com.example.stockmanagement.Product.Product;
-import com.example.stockmanagement.Users.User;
+import com.example.stockmanagement.User.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,6 +23,7 @@ public class Sale {
     @ManyToOne
     @JoinColumn(name = "user_id" )
     private User user;
+
     private int quantitySold;
     private double salePrice;
     private LocalDateTime saleDate;

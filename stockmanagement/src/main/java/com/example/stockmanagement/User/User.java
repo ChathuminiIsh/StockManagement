@@ -1,15 +1,13 @@
-package com.example.stockmanagement.Users;
+package com.example.stockmanagement.User;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class User {
 
     @Id
